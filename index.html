@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <title>我的个人博客</title>
+  <style>
+    body {
+      font-family: "Helvetica", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      margin: 20px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #f1f1f1;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-  <h1>欢迎来到我的个人博客！</h1>
-  <p>这里是通过 GitHub Pages 搭建的。</p>
+  <header>
+    <h1>欢迎来到我的个人博客</h1>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="about.html">关于我</a>
+      <a href="photos.html">相册</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>最新动态</h2>
+    <p>这里是我的博客首页，我会分享一些生活点滴和学习记录。</p>
+
+    <h2>我的照片</h2>
+    <img src="images/pexels-rfera-2286895.jpg" alt="我的照片">
+    <p>这是我随便放的一张图片（可以换成自己的照片）。</p>
+  </div>
+
+  <footer>
+    <p>© 2025 我的个人博客 | 由 GitHub Pages 驱动</p>
+  </footer>
 </body>
 </html>
+
