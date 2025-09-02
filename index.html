@@ -222,7 +222,7 @@ originalImg.onload = () => {
 <!-- Markdown 渲染脚本 -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-fetch('content/2024_student_IT_guide.md')
+fetch('content/full.md')
   .then(res => res.text())
   .then(text => {
     document.getElementById('markdown-content').innerHTML = marked.parse(text);
