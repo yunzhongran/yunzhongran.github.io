@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>我的相册</title>
+  <style>
+    body {
+      font-family: "Helvetica", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #f1f1f1;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>我的相册</h1>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="about.html">关于我</a>
+      <a href="photos.html">相册</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>生活点滴</h2>
+    <div class="gallery">
+      <img src="images/photo1.jpg" alt="照片1">
+      <img src="images/photo2.jpg" alt="照片2">
+      <img src="images/photo3.jpg" alt="照片3">
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 我的个人博客 | 相册页面</p>
+  </footer>
+</body>
+</html>
