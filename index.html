@@ -73,6 +73,24 @@
   .photo-wrapper canvas {
     display: block;
   }
+
+  /* Markdown 内容样式 */
+  #markdown-content {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    line-height: 1.6;
+  }
+
+  #markdown-content h1, #markdown-content h2, #markdown-content h3 {
+    color: #333;
+  }
+
+  #markdown-content a {
+    color: #1a0dab;
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
@@ -99,23 +117,17 @@
       <canvas id="canvas"></canvas>
     </div>
   </div>
+
+  <!-- Markdown 内容显示区 -->
+  <h2>2024 学生 IT 手册</h2>
+  <div id="markdown-content"></div>
 </div>
-  
+
 <footer>
   <p>© 2025 我的个人博客 | 由 GitHub Pages 驱动</p>
 </footer>
-<!-- 在这里添加 Markdown 内容 -->
-  <h2>2024 学生 IT 手册</h2>
-  <div id="markdown-content"></div>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-  fetch('content/2024_student_IT_guide.md')
-    .then(res => res.text())
-    .then(text => {
-      document.getElementById('markdown-content').innerHTML = marked.parse(text);
-    });
-  </script>
-</div>
+
+<!-- 粒子效果脚本 -->
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -160,7 +172,6 @@ class Particle {
 
 let particlesArray = [];
 
-// 初始化：根据原始照片大小生成 Canvas 粒子效果
 function init(imgWidth, imgHeight) {
   canvas.width = imgWidth;
   canvas.height = imgHeight;
@@ -202,13 +213,21 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-// 等原始图片加载完成后，再设置 Canvas 尺寸
 const originalImg = document.getElementById('original-photo');
 originalImg.onload = () => {
   init(originalImg.width, originalImg.height);
 };
 </script>
 
+<!-- Markdown 渲染脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+fetch('content/2024_student_IT_guide.md')
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById('markdown-content').innerHTML = marked.parse(text);
+  });
+</script>
+
 </body>
 </html>
-
