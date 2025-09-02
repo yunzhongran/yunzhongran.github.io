@@ -104,7 +104,18 @@
 <footer>
   <p>© 2025 我的个人博客 | 由 GitHub Pages 驱动</p>
 </footer>
-
+<!-- 在这里添加 Markdown 内容 -->
+  <h2>2024 学生 IT 手册</h2>
+  <div id="markdown-content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+  fetch('content/2024_student_IT_guide.md')
+    .then(res => res.text())
+    .then(text => {
+      document.getElementById('markdown-content').innerHTML = marked.parse(text);
+    });
+  </script>
+</div>
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
