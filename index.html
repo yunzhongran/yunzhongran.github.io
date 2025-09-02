@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>我的个人博客</title>
-<style>
-  body { margin:0; font-family:"Helvetica", sans-serif; background:#fff; color:#000; }
-  header, footer { text-align:center; padding:1rem; background:#f0f0f0; }
-  nav a { margin:0 15px; text-decoration:none; font-weight:bold; color:#000; }
-  nav a:hover { text-decoration:underline; }
-  .container { max-width:800px; margin:auto; padding:20px; }
-</style>
+  <meta charset="UTF-8">
+  <title>我的个人博客</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica", sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    header nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
+  <!-- 顶部导航 -->
+  <header>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="about.html">关于我</a>
+      <a href="album.html">相册</a>
+      <a href="2024_student_IT_guide.html">IT指南</a> <!-- 新增 IT 指南 -->
+      <a href="program.html">Python程序</a> <!-- 新增 Python 程序 -->
+    </nav>
+  </header>
 
-<header>
-  <h1>欢迎来到我的个人博客</h1>
-  <nav>
-    <a href="index.html">首页</a>
-    <a href="about.html">关于我</a>
-    <a href="photos.html">相册</a>
-  </nav>
-</header>
-
-<div class="container">
-  <h2>首页</h2>
-  <p>这里是博客首页内容，可以写一些欢迎语或个人简介。</p>
-</div>
-
-<footer>
-  <p>© 2025 我的个人博客</p>
-</footer>
-
+  <!-- 主体内容 -->
+  <main>
+    <h1>欢迎来到我的个人博客</h1>
+    <p>这里是首页内容。</p>
+  </main>
 </body>
 </html>
