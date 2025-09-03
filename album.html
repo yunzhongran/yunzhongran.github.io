@@ -42,16 +42,42 @@
   </header>
 
   <main>
-     <h1>相册</h1>
-    <p>左边是原始照片，右边是粒子化互动效果。</p>
+  <h1>相册</h1>
+  <p>左边是原始照片，右边是粒子化互动效果。</p>
 
-    <div class="photo-wrapper">
-      <img id="original-photo" src="photos/myphoto.jpg" alt="我的照片">
-      <div class="canvas-container">
-        <canvas id="canvas"></canvas>
-      </div>
+  <div class="photo-wrapper">
+    <img id="original-photo" src="photos/myphoto.jpg" alt="我的照片">
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
     </div>
+  </div>
+</main>
 
+<style>
+  .photo-wrapper {
+    display: flex;
+    gap: 20px; /* 左右间距 */
+    align-items: center;
+  }
+
+  #original-photo {
+    max-width: 250px;  /* 调整这里可以控制图片大小 */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .canvas-container {
+    flex: 1; /* 让 canvas 自动占满剩余空间 */
+  }
+
+  #canvas {
+    width: 250px;   /* 控制 canvas 尺寸 */
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+</style>
 
   <!-- 粒子化效果脚本 -->
   <script>
@@ -134,15 +160,7 @@
   originalImg.onload = ()=>{ init(originalImg.width,originalImg.height); };
   </script>
 
-  <!-- Markdown 解析 -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-  fetch('content/2024_student_IT_guide.md')
-    .then(res => res.text())
-    .then(text => { 
-      document.getElementById('markdown-content').innerHTML = marked.parse(text); 
-    });
-  </script>
+
 </body>
 </html>
    
