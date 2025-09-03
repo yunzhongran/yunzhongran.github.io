@@ -2,68 +2,60 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>IT 指南</title>
+  <title>我的个人博客</title>
   <style>
     body {
       margin: 0;
       font-family: "Helvetica", sans-serif;
-      background-color: #111;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
     }
     header {
-      position: relative;
-      z-index: 100;
-      background-color: #222;
-      padding: 15px;
-      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
     }
     header nav a {
       color: #fff;
+      margin: 0 10px;
       text-decoration: none;
-      margin: 0 15px;
-      font-size: 18px;
     }
     header nav a:hover {
       text-decoration: underline;
     }
     main {
-      max-width: 900px;
-      margin: 40px auto;
       padding: 20px;
-      background: #1a1a1a;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
+  <!-- 顶部导航 -->
   <header>
     <nav>
       <a href="index.html">首页</a>
       <a href="about.html">关于我</a>
       <a href="album.html">相册</a>
-      <a href="it-guide.html">IT 指南</a>
-      <a href="python.html">Python 程序</a>
+      <a href="2024_student_IT_guide.html">IT指南</a>
+      <a href="program.html">Python程序</a>
     </nav>
   </header>
 
-  <main id="content">
-    <h1>加载中...</h1>
+  <main>
+    <h1>IT指南</h1>
+    <div id="md-content">加载中...</div>
   </main>
 
+  <!-- 引入 marked.js 来解析 Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     fetch("content/2024_student_IT_guide.md")
       .then(response => response.text())
       .then(text => {
-        document.getElementById("content").innerHTML = marked.parse(text);
+        document.getElementById("md-content").innerHTML = marked.parse(text);
       })
       .catch(err => {
-        document.getElementById("content").innerHTML = "<p>加载失败，请检查文件路径。</p>";
-        console.error(err);
+        document.getElementById("md-content").innerText = "加载失败：" + err;
       });
   </script>
-
-  <!-- 引入 marked.js 库来渲染 markdown -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </body>
 </html>
