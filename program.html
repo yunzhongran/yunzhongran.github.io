@@ -1,1 +1,59 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>我的个人博客</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica", sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    header nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="about.html">关于我</a>
+      <a href="album.html">相册</a>
+      <a href="it-guide.html">IT指南</a> <!-- 新增 IT 指南 -->
+      <a href="program.html">Python程序</a> <!-- 新增 Python 程序 -->
+    </nav>
+  </header>
+
+  <main>
+  <h1>相册</h1>
+  <p>左边是原始照片，右边是粒子化互动效果。</p>
+
+  <div class="photo-wrapper">
+    <img id="original-photo" src="photos/myphoto.jpg" alt="我的照片">
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+</main>
+
+
+</body>
+</html>
+   
