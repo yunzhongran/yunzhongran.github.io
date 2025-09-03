@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>我的个人博客</title>
+  <title>我的相册</title>
   <style>
     body {
       margin: 0;
@@ -26,6 +26,21 @@
     main {
       padding: 20px;
     }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -35,15 +50,23 @@
       <a href="index.html">首页</a>
       <a href="about.html">关于我</a>
       <a href="album.html">相册</a>
-      <a href="2024_student_IT_guide.html">IT指南</a> <!-- 新增 IT 指南 -->
-      <a href="program.html">Python程序</a> <!-- 新增 Python 程序 -->
+      <a href="2024_student_IT_guide.html">IT指南</a>
+      <a href="program.html">Python程序</a>
     </nav>
   </header>
 
   <!-- 主体内容 -->
   <main>
-    <h1>欢迎来到我的个人博客</h1>
-    <p>这里是首页内容。</p>
+    <h1>我的相册</h1>
+    <p>这里展示了一些照片。</p>
+
+    <div class="gallery">
+      <img src="photos/photo1.jpg" alt="照片1">
+      <img src="photos/photo2.jpg" alt="照片2">
+      <img src="photos/photo3.jpg" alt="照片3">
+      <img src="photos/photo4.jpg" alt="照片4">
+      <img src="photos/photo5.jpg" alt="照片5">
+    </div>
   </main>
 </body>
 </html>
