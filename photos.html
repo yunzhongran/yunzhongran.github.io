@@ -26,59 +26,6 @@
     main {
       padding: 20px;
     }
-
-    /* 照片左右排版 */
-    .photo-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px; /* 左右间距 */
-      margin: 20px 0;
-    }
-
-    #original-photo {
-      max-width: 45%;
-      height: auto;
-      display: block;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .canvas-container {
-      max-width: 45%;
-      flex-grow: 1;
-    }
-
-    .canvas-container canvas {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-
-    /* Markdown 样式 */
-    #markdown-content {
-      background: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-      line-height: 1.6;
-      margin-top: 20px;
-    }
-    #markdown-content h1, 
-    #markdown-content h2 {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      margin-top: 30px;
-      background: #f1f1f1;
-      font-size: 14px;
-      color: #555;
-    }
   </style>
 </head>
 <body>
@@ -88,13 +35,14 @@
       <a href="index.html">首页</a>
       <a href="about.html">关于我</a>
       <a href="album.html">相册</a>
-      <a href="2024_student_IT_guide.html">IT指南</a>
-      <a href="program.html">Python程序</a>
+      <a href="2024_student_IT_guide.html">IT指南</a> <!-- 新增 IT 指南 -->
+      <a href="program.html">Python程序</a> <!-- 新增 Python 程序 -->
     </nav>
   </header>
 
-  <main class="container">
-    <h2>我的照片</h2>
+
+  <main>
+     <h2>我的照片</h2>
     <p>左边是原始照片，右边是粒子化互动效果。</p>
 
     <div class="photo-wrapper">
@@ -202,6 +150,6 @@
       document.getElementById('markdown-content').innerHTML = marked.parse(text); 
     });
   </script>
-
 </body>
 </html>
+   
