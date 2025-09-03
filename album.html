@@ -80,40 +80,60 @@
   const ctx = canvas.getContext('2d');
   const mouse = { x:null, y:null, radius:80 };
 
-  canvas.addEventListener('mousemove', e => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
+canvas.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+});
 
-  class Particle {
-    constructor(x,y,color){
-      this.x = x; this.y = y;
-      this.baseX = x; this.baseY = y;
-      this.size = 2; 
-      this.color = color;
-      this.density = Math.random()*30+1;
-    }
-    draw(){
-      ctx.fillStyle = this.color;
-      ctx.beginPath();
-      ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-      ctx.fill();
-    }
-    update(){
+// 鼠标移出画布时，取消坐标
+canvas.addEventListener('mouseleave', () => {
+  mouse.x = null;
+  mouse.y = null;
+});
+
+class Particle {
+  constructor(x,y,color){
+    this.x = x; this.y = y;
+    this.baseX = x; this.baseY = y;
+    this.size = 2; 
+    this.color = color;
+    this.density = Math.random()*30+1;
+    this.vx = 0; // 速度X
+    this.vy = 0; // 速度Y
+  }
+  draw(){
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+  update(){
+    if(mouse.x !== null && mouse.y !== null){
       let dx = mouse.x - this.x;
       let dy = mouse.y - this.y;
       let distance = Math.sqrt(dx*dx+dy*dy);
       if(distance < mouse.radius){
         let force = (mouse.radius - distance)/mouse.radius;
-        this.x -= (dx/distance) * force * this.density;
-        this.y -= (dy/distance) * force * this.density;
-      } else {
-        this.x += (this.baseX - this.x) * 0.05;
-        this.y += (this.baseY - this.y) * 0.05;
+        this.vx -= (dx/distance) * force * this.density * 0.6;
+        this.vy -= (dy/distance) * force * this.density * 0.6;
       }
     }
+
+    // 弹簧回弹公式
+    let dx = this.baseX - this.x;
+    let dy = this.baseY - this.y;
+    this.vx += dx * 0.05; // 弹簧力度
+    this.vy += dy * 0.05;
+    this.vx *= 0.8;       // 摩擦/阻尼，越小回弹越快停
+    this.vy *= 0.8;
+
+    // 更新位置
+    this.x += this.vx;
+    this.y += this.vy;
   }
+}
+
 
   let particlesArray=[];
   function init(imgWidth,imgHeight){
