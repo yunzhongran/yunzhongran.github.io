@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -27,6 +26,17 @@
     main {
       padding: 20px;
     }
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -36,17 +46,77 @@
       <a href="index.html">首页</a>
       <a href="about.html">关于我</a>
       <a href="album.html">相册</a>
-      <a href="it-guide.html">IT指南</a> <!-- 新增 IT 指南 -->
-      <a href="program.html">Python程序</a> <!-- 新增 Python 程序 -->
+      <a href="it-guide.html">IT指南</a>
+      <a href="program.html">Python程序</a>
     </nav>
   </header>
 
   <main>
-  <h1>Python程序</h1>
+    <h1>Python程序</h1>
+    <p>下面展示的是一个调用 Mineru API 解析 PDF 的 Python 示例：</p>
 
-</main>
+    <pre><code>import requests
+import time
+import sys
 
+API_TOKEN = "eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ..."
+PDF_URL = "https://github.com/yunzhongran/yunzhongran.github.io/blob/main/file/2024年学生IT手册.pdf?raw=true"
 
+# 提交解析任务
+res = requests.post(
+    "https://mineru.net/api/v4/extract/task",
+    headers={
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {API_TOKEN}"
+    },
+    json={
+        "url": PDF_URL,
+        "is_ocr": True,
+        "enable_formula": False
+    }
+)
+
+print("状态码:", res.status_code)
+print("返回内容:", res.text)
+
+# 检查是否返回正常
+if res.status_code != 200:
+    print("❌ 请求失败，检查 API 地址 / 网络 / Token 是否正确")
+    sys.exit(1)
+
+res_json = res.json()
+if "data" not in res_json or "task_id" not in res_json["data"]:
+    print("❌ 提交任务失败，API 返回中没有 task_id")
+    sys.exit(1)
+
+task_id = res_json["data"]["task_id"]
+print("✅ 任务已提交，task_id:", task_id)
+
+# 轮询任务状态
+query_url = f"https://mineru.net/api/v4/extract/task/{task_id}"
+markdown_url = None
+while True:
+    qres = requests.get(query_url, headers={"Authorization": f"Bearer {API_TOKEN}"})
+    data = qres.json().get("data", {})
+    state = data.get("state")
+
+    if state == "done":
+        markdown_url = data.get("full_zip_url")
+        print("🎉 解析完成，下载地址:", markdown_url)
+        break
+    elif state == "failed":
+        print("❌ 解析失败:", data.get("err_msg", "未知错误"))
+        sys.exit(1)
+    else:
+        print("⌛ 当前状态:", state)
+        time.sleep(2)
+
+# 下载解析结果
+if markdown_url:
+    r = requests.get(markdown_url)
+    with open("result.zip", "wb") as f:
+        f.write(r.content)
+    print("✅ 已保存解析结果到 result.zip")</code></pre>
+  </main>
 </body>
 </html>
-   
