@@ -95,10 +95,7 @@
   <h1>相册</h1>
   <p>左边是原始照片，右边是粒子化互动效果。</p>
 
-  <div class="welcome-card">
-      <h2>其他动态</h2>
-      <p>欢迎</p>
-  </div>
+
 
   <div class="photo-wrapper">
     <img id="original-photo" src="photos/myphoto.jpg" alt="我的照片">
@@ -229,6 +226,11 @@ class Particle {
   const originalImg = document.getElementById('original-photo');
   originalImg.onload = ()=>{ init(originalImg.width,originalImg.height); };
   </script>
+
+  <div class="welcome-card">
+      <h2>其他动态</h2>
+      <p>欢迎</p>
+  </div>
 
 
 </body>
