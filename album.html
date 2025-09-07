@@ -233,6 +233,85 @@ class Particle {
   </div>
 
 
+<!-- 图片轮播板块 -->
+<div class="carousel">
+  <button class="prev">&#10094;</button>
+  <img id="carousel-image" src="photos_2/photo_3.jpg" alt="轮播图片">
+  <button class="next">&#10095;</button>
+</div>
+
+<style>
+.carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 50px auto; /* 居中 */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  padding: 0 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.carousel button:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+.carousel .prev {
+  left: 10px;
+}
+
+.carousel .next {
+  right: 10px;
+}
+</style>
+
+<script>
+const carouselImages = ["photos/photo1.jpg", "photos/photo2.jpg"];
+let currentIndex = 0;
+
+const carouselImage = document.getElementById("carousel-image");
+const prevBtn = document.querySelector(".carousel .prev");
+const nextBtn = document.querySelector(".carousel .next");
+
+function showImage(index) {
+  carouselImage.src = carouselImages[index];
+}
+
+// 点击箭头切换图片
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+  showImage(currentIndex);
+});
+
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % carouselImages.length;
+  showImage(currentIndex);
+});
+</script>
+
+
+
 </body>
 </html>
    
